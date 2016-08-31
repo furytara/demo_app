@@ -3,7 +3,7 @@ module ApplicationHelper
   include SessionsHelper
 
   def full_title(page_title = '')
-    base_title = "Ruby on Rails Tutorial Sample App"
+    base_title = "Sample Blog App"
     if page_title.empty?
       base_title
     else

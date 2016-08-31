@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :entries, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -83,6 +85,12 @@ class User < ActiveRecord::Base
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def feed
+    # Micropost.where("user_id = ?", id)
+    following_ids = "SELECT followed_id from Relationships where follower_id = :user_id"
+    Entry.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
   end
 
   private

@@ -241,17 +241,27 @@ input {
   }
 }
 
-/* microposts */
-.microposts {
+/* entries */
+.entries {
   list-style: none;
   padding: 0;
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
   }
   .user {
+    color: #365899;
+    font-size: 11px;
+    font-weight: 400;
     margin-top: 5em;
     padding-top: 0;
+  }
+  .title {
+    display: block;
+    font-weight: 600;
+    font-size: 15px;
+    padding-bot: 10px;
+    color: #596981;
   }
   .content {
     display: block;
@@ -262,6 +272,8 @@ input {
     }
   }
   .timestamp {
+    font-size: 11px;
+    font-weight: 400;
     color: $gray-light;
     display: block;
     margin-left: 60px;
@@ -271,6 +283,10 @@ input {
     margin-right: 10px;
     margin-top: 5px;
   }
+  .comments {
+    list-style: none;
+  }
+
 }
 
 aside {

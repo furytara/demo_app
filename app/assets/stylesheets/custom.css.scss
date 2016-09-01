@@ -262,6 +262,11 @@ input {
     font-size: 15px;
     padding-bot: 10px;
     color: #596981;
+
+    .btn-view-entry {
+      float: right;
+      width: 50px;
+    }
   }
   .content {
     display: block;
@@ -271,12 +276,24 @@ input {
       padding: 5px 0;
     }
   }
+  .new-comment {
+    display: block;
+    margin-left: 60px;
+  }
+
   .timestamp {
     font-size: 11px;
     font-weight: 400;
     color: $gray-light;
     display: block;
     margin-left: 60px;
+    .comment-time {
+      display: inline-block;
+    }
+
+    .delete-form {
+      float: right;
+    }
   }
   .gravatar {
     float: left;

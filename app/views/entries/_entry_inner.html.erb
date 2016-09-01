@@ -1,0 +1,31 @@
+<%= link_to gravatar_for(entry.user, size: 50), entry.user %>
+<span class="user"><%= link_to entry.user.name, entry.user %></span>
+<span class="title">
+  <span class="form-inline">
+    <%= entry.title %>
+    <a href="<%= entry_path(entry) %>" class=" btn-view-entry">
+      <span class="glyphicon glyphicon-play-circle"></span>
+    </a>
+  </span>
+</span>
+
+<span class="content">
+  <%= entry.content %>
+</span>
+<span class="timestamp">
+  Posted <%= time_ago_in_words(entry.created_at) %> ago.
+   <% if current_user?(entry.user) %>
+    <%= link_to "Delete", entry, method: "delete", data: { confirm: "You sure?" } %>
+  <% end %>
+</span>
+
+<div class="comment-container">
+  <ol class="comments">
+    <% if entry.comments.any? %>
+        <%= render entry.comments %>
+    <% end %>
+    <% if logged_in? %>
+      <%=render '/shared/comment_form', entry: entry %>
+    <% end %>
+  </ol>
+</div>

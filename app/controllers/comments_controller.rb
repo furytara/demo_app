@@ -6,17 +6,18 @@ class CommentsController < ApplicationController
     @entry = Entry.find(params[:entry_id])
     @comment = @entry.comments.new(comment_params)
     if @comment.save
-      flash[:success] = "Comment created"
-      redirect_to :back
+      @entry = Entry.find(params[:entry_id])
     else
-      render 'static_pages/home'
+      @entry = current_user.entries.build if logged_in?
+      @feed_items = current_user.feed.paginate(page: params[:page])
+      redirect_to :back
     end
   end
 
   def destroy
+    id = @comment.entry.id
     @comment.destroy
-    flash[:success] = "Comment deleted"
-    redirect_to request.referrer || root_url
+    @entry = Entry.find(id)
   end
 
   private

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
   resources :relationships, only: [:create, :destroy]
-  resources :entries,       only: [:create, :destroy]
+  resources :entries,       only: [:show, :create, :destroy]
   resources :comments,      only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.

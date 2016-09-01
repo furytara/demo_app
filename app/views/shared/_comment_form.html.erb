@@ -1,8 +1,20 @@
-<%= form_for(entry.comments.build) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= hidden_field_tag :entry_id, entry.id %>
-    <%= f.text_area :content, placeholder: "Write a comment..." %>
+<li id="new-comment-entry-<%= entry.id %>">
+  <%= link_to gravatar_for(current_user, size: 40), current_user %>
+  <span class="user"><%= link_to current_user.name, current_user %></span>
+  <div class="new-comment">
+    <%= form_for(entry.comments.build, remote: true) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="form-horizontal">
+        <div class="form-group">
+          <div class="col-md-9">
+            <%= hidden_field_tag :entry_id, entry.id %>
+            <%= f.text_area :content, :required => true, placeholder: "Write a comment..." %>
+          </div>
+          <div class="col-md-2">
+            <%= f.submit "Post", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
-<% end %>
+</li>

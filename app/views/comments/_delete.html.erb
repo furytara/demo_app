@@ -1,0 +1,5 @@
+<%= form_for(comment,
+             html: { method: :delete,  class: "delete-form"},
+             remote: true) do |f| %>
+  <%= f.submit "x", data: { confirm: 'Are you sure?' } %>
+<% end %>

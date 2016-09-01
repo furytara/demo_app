@@ -37,14 +37,14 @@ followers.each { |follower| follower.follow(user) }
 
 # Entries
 users = User.order(:created_at).take(6)
-users_comment = User.order(:created_at).take(5)
-50.times do
+users_comment = User.order(:created_at).take(31)
+31.times do
   title = Faker::Name.name
   content = Faker::Lorem.paragraph(2)
   users.each do |user|
     entry = user.entries.create!(title: title, content: content)
     comment_content = Faker::Lorem.sentence(5)
-    5.times do |i|
+    31.times do |i|
       entry.comments.create!(content: comment_content, user: users_comment[i])
     end
   end

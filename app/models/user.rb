@@ -93,6 +93,10 @@ class User < ActiveRecord::Base
     Entry.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
   end
 
+  def feed_all
+    Entry.all
+  end
+
   private
     def downcase_email
       self.email = email.downcase

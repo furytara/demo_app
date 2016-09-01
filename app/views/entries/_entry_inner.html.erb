@@ -8,9 +8,9 @@
     </a>
   </span>
 </span>
-
 <span class="content">
   <%= entry.content %>
+  <%= image_tag entry.picture.url if entry.picture? %>
 </span>
 <span class="timestamp">
   Posted <%= time_ago_in_words(entry.created_at) %> ago.
@@ -18,7 +18,6 @@
     <%= link_to "Delete", entry, method: "delete", data: { confirm: "You sure?" } %>
   <% end %>
 </span>
-
 <div class="comment-container">
   <ol class="comments">
     <% if entry.comments.any? %>

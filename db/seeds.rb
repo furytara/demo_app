@@ -44,7 +44,7 @@ users_comment = User.order(:created_at).take(31)
   users.each do |user|
     entry = user.entries.create!(title: title, content: content)
     comment_content = Faker::Lorem.sentence(5)
-    31.times do |i|
+    5.times do |i|
       entry.comments.create!(content: comment_content, user: users_comment[i])
     end
   end
